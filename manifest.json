@@ -1,0 +1,89 @@
+{
+    "manifest_version": 2,
+    "name": "Rafiki Assistant",
+    "description": "Your all-in-one personal assistant",
+    "version": "1.0",
+  
+    "icons": {
+      "16": "icons/icon-16.png",
+      "32": "icons/icon-32.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    },
+  
+    "permissions": [
+      "activeTab",
+      "storage",
+      "alarms",
+      "notifications",
+      "tabs",
+      "contextMenus",
+      "webNavigation",
+      "webRequest",
+      "webRequestBlocking",
+      "background",
+      "identity",
+      "unlimitedStorage",
+      "clipboardWrite",
+      "clipboardRead",
+      "management",
+      "identity.email",
+      "identity.phone",
+      "identity.userInfo",
+      "contacts",
+      "history",
+      "downloads",
+      "system.display",
+      "system.storage",
+      "system.cpu",
+      "system.memory",
+      "storage",
+      "alarms",
+      "cookies",
+      "fileSystemProvider"
+    ],
+  
+    "background": {
+      "scripts": ["background.js"],
+      "persistent": true
+    },
+  
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ],
+  
+    "web_accessible_resources": [
+      {
+        "resources": ["images/*"],
+        "matches": ["<all_urls>"]
+      }
+    ],
+  
+    "options_page": "options.html",
+  
+    "commands": {
+      "_execute_browser_action": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+Y",
+          "mac": "MacCtrl+Shift+Y"
+        }
+      },
+      "listen": {
+        "suggested_key": {
+          "default": "Ctrl+Shift+E",
+          "mac": "MacCtrl+Shift+E"
+        }
+      }
+    },
+  
+    "browser_action": {
+      "default_icon": "icons/icon-48.png",
+      "default_popup": "popup.html"
+    },
+  
+    "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+  }
+  
